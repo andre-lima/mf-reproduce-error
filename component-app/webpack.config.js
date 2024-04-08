@@ -2,7 +2,7 @@ const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './index.js',
-  mode: 'production',
+  mode: 'development',
   devtool: 'hidden-source-map',
   output: {
     publicPath: 'http://localhost:3001/',

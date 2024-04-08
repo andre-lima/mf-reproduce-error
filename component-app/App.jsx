@@ -1,7 +1,7 @@
 import React from 'lib-app/react';
-import Logo from './src/Logo';
-import Dialog from './src/Dialog';
-import Button from './src/Button';
+import Logo from './src/Logo.jsx';
+import Dialog from './src/Dialog.jsx';
+import Button from './src/Button.jsx';
 export default class App extends React.Component {
   constructor(props) {
     super(props);

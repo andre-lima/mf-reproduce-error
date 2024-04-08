@@ -3,6 +3,7 @@ import Button from 'component-app/Button';
 import Dialog from 'component-app/Dialog';
 import ToolTip from 'component-app/ToolTip';
 import MainAppButton from './MainAppButton.jsx';
+import { Router, Route, Link, Switch, browserHistory } from 'react-router-dom';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -38,10 +39,35 @@ export default class App extends React.Component {
         <Button type="warning" />
         <h4>Dialog:</h4>
         <button onClick={this.handleClick}>click me to open Dialog</button>
-        <Dialog switchVisible={this.handleSwitchVisible} visible={this.state.dialogVisible} />
+        <Dialog
+          switchVisible={this.handleSwitchVisible}
+          visible={this.state.dialogVisible}
+        />
         <h4>hover me please!</h4>
         <ToolTip content="hover me please" message="Hello,world!" />
         <MainAppButton type="warning"></MainAppButton>
+        -------
+        <div>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/app">App</Link>
+            </li>
+          </ul>
+
+          <hr />
+
+          <Switch>
+            <Route exact path="/">
+              <div>home</div>
+            </Route>
+            <Route path="/app">
+              <div>app div</div>
+            </Route>
+          </Switch>
+        </div>
       </div>
     );
   }

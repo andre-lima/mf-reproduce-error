@@ -3,13 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 module.exports = {
   entry: './index.js',
-  mode: 'production',
+  mode: 'development',
   devtool: 'hidden-source-map',
-  optimization: {
-    splitChunks: {
-      chunks: (chunk) => chunk.name !== 'legacy-index',
-    },
-  },
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: (chunk) => chunk.name !== 'legacy-index',
+  //   },
+  // },
   output: {
     publicPath: 'http://localhost:3002/',
     clean: true,
