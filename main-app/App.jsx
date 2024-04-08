@@ -28,24 +28,8 @@ export default class App extends React.Component {
     return (
       <div>
         <h1>Open Dev Tool And Focus On Network,checkout resources details</h1>
-        <p>
-          react、react-dom js files hosted on <strong>lib-app</strong>
-        </p>
-        <p>
-          components hosted on <strong>component-app</strong>
-        </p>
-        <h4>Buttons:</h4>
-        <Button type="primary" />
-        <Button type="warning" />
-        <h4>Dialog:</h4>
-        <button onClick={this.handleClick}>click me to open Dialog</button>
-        <Dialog
-          switchVisible={this.handleSwitchVisible}
-          visible={this.state.dialogVisible}
-        />
-        <h4>hover me please!</h4>
-        <ToolTip content="hover me please" message="Hello,world!" />
-        <MainAppButton type="warning"></MainAppButton>
+        <hr />
+        <h2>Main application</h2>
         -------
         <div>
           <ul>
@@ -53,7 +37,10 @@ export default class App extends React.Component {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/app">App</Link>
+              <Link to="/module-app">Module</Link>
+            </li>
+            <li>
+              <Link to="/part-of-main">Other page of main app</Link>
             </li>
           </ul>
 
@@ -61,10 +48,29 @@ export default class App extends React.Component {
 
           <Switch>
             <Route exact path="/">
-              <div>home</div>
+              <div>main home app</div>
             </Route>
-            <Route path="/app">
-              <div>app div</div>
+            <Route path="/module-app">
+              <p>
+                components hosted on <strong>component-app</strong>
+              </p>
+              <h4>Buttons:</h4>
+              <Button type="primary" />
+              <Button type="warning" />
+              <h4>Dialog:</h4>
+              <button onClick={this.handleClick}>
+                click me to open Dialog
+              </button>
+              <Dialog
+                switchVisible={this.handleSwitchVisible}
+                visible={this.state.dialogVisible}
+              />
+              <h4>hover me please!</h4>
+              <ToolTip content="hover me please" message="Hello,world!" />
+            </Route>
+
+            <Route path="/part-of-main">
+              <MainAppButton type="warning"></MainAppButton>
             </Route>
           </Switch>
         </div>
