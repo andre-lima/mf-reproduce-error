@@ -1,0 +1,15 @@
+dist/
+
+node_modules/
+
+main-app/dist/
+main-app/.DS_Store
+main-app/node_modules/
+
+component-app/dist/
+component-app/.DS_Store
+component-app/node_modules/
+
+lib-app/dist/
+lib-app/.DS_Store
+lib-app/node_modules/
