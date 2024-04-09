@@ -1,6 +1,8 @@
 const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const { dependencies } = require('./package.json');
+
 module.exports = {
   entry: './index.js',
   mode: 'production',
@@ -71,6 +73,25 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'component_app',
       filename: 'remoteEntry.js',
+      shared: {
+        ...dependencies,
+        react: {
+          singleton: true,
+          requiredVersion: dependencies.react,
+        },
+        'react-dom': {
+          singleton: true,
+          requiredVersion: dependencies['react-dom'],
+        },
+        'react-router': {
+          singleton: true,
+          requiredVersion: dependencies['react-router'],
+        },
+        'react-router-dom': {
+          singleton: true,
+          requiredVersion: dependencies['react-router-dom'],
+        },
+      },
       exposes: {
         './Button': './src/Button.jsx',
         './Dialog': './src/Dialog.jsx',

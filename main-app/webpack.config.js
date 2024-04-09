@@ -1,6 +1,8 @@
 const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const { dependencies } = require('./package.json');
+
 module.exports = {
   entry: './index.js',
   mode: 'production',
@@ -70,6 +72,31 @@ module.exports = {
         'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',
         'component-app': 'component_app@http://localhost:3001/remoteEntry.js',
       },
+      shared: [
+        {
+          ...Object.keys(dependencies).forEach((key) => ({
+            [key]: {
+              eager: true,
+              requiredVersion: dependencies[key],
+            },
+          })),
+          react: {
+            eager: true,
+            singleton: true,
+            requiredVersion: dependencies.react,
+          },
+          'react-dom': {
+            eager: true,
+            singleton: true,
+            requiredVersion: dependencies['react-dom'],
+          },
+          'react-router': {
+            eager: true,
+            singleton: true,
+            requiredVersion: dependencies['react-router'],
+          },
+        },
+      ],
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
