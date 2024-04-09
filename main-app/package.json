@@ -7,7 +7,7 @@
     "build": "webpack build --config webpack.config.js",
     "legacy:build": "webpack --config webpack.config.js --stats=minimal",
     "serve": "webpack serve --config webpack.config.js",
-    "start": "concurrently \"npm run build\" \"npm run serve\"",
+    "start": "pnpm run serve",
     "legacy:start": "concurrently \"npm run legacy:build\" \"npm run serve\""
   },
   "dependencies": {

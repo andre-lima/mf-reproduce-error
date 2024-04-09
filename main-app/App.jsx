@@ -9,21 +9,18 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       dialogVisible: false,
+      otherComponentVisible: false,
     };
     this.handleClick = this.handleClick.bind(this);
-    this.handleSwitchVisible = this.handleSwitchVisible.bind(this);
   }
+
   handleClick(ev) {
     console.log(ev);
     this.setState({
-      dialogVisible: true,
+      otherComponentVisible: !this.state.otherComponentVisible,
     });
   }
-  handleSwitchVisible(visible) {
-    this.setState({
-      dialogVisible: visible,
-    });
-  }
+
   render() {
     return (
       <div>
@@ -70,7 +67,13 @@ export default class App extends React.Component {
             </Route>
 
             <Route path="/part-of-main">
-              <MainAppButton type="warning"></MainAppButton>
+              <MainAppButton
+                buttonClick={this.handleClick}
+                type="warning"
+              ></MainAppButton>
+              {this.state.otherComponentVisible && (
+                <div>other component here</div>
+              )}
             </Route>
           </Switch>
         </div>

@@ -3,13 +3,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 module.exports = {
   entry: './index.js',
-  mode: 'development',
+  mode: 'production',
   devtool: 'hidden-source-map',
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: (chunk) => chunk.name !== 'legacy-index',
-  //   },
-  // },
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      maxSize: 700,
+      minSize: 300,
+      minChunks: 10,
+    },
+  },
   output: {
     publicPath: 'auto',
   },
@@ -25,6 +28,11 @@ module.exports = {
     },
     port: 3002,
     historyApiFallback: true,
+  },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
   },
   resolve: {
     extensions: [

@@ -1,12 +1,38 @@
 const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 module.exports = {
   entry: './index.js',
-  mode: 'development',
+  mode: 'production',
   devtool: 'hidden-source-map',
   output: {
-    publicPath: 'http://localhost:3001/',
-    clean: true,
+    publicPath: 'auto',
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      maxSize: 700,
+      minSize: 300,
+      minChunks: 10,
+    },
+  },
+  devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers':
+        'X-Requested-With, content-type, Authorization',
+    },
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    port: 3001,
+    historyApiFallback: true,
+  },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
   },
   cache: false,
   resolve: {

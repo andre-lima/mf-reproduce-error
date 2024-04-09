@@ -29,8 +29,13 @@ export default class MainAppButton extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
-    var type = this.props.type || 'primary';
-    return <button style={styleMapping[type]}>HI! I'M A BUTTON FROM THE MAIN APP</button>;
+    const type = this.props.type || 'primary';
+    return (
+      <button onClick={this.props.buttonClick} style={styleMapping[type]}>
+        HI! I'M A BUTTON FROM THE MAIN APP
+      </button>
+    );
   }
 }
