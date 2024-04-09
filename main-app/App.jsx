@@ -3,21 +3,32 @@ import Button from 'component-app/Button';
 import Dialog from 'component-app/Dialog';
 import ToolTip from 'component-app/ToolTip';
 import MainAppButton from './MainAppButton.jsx';
-import { Router, Route, Link, Switch, browserHistory } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
+import ExtraComponentOne from './ExtraComponentOne.jsx';
+import BasicTable from './Table.jsx';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       dialogVisible: false,
+      tableComponentVisible: false,
       otherComponentVisible: false,
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClickOther = this.handleClickOther.bind(this);
+    this.handleClickTable = this.handleClickTable.bind(this);
   }
 
-  handleClick(ev) {
+  handleClickOther(ev) {
     console.log(ev);
     this.setState({
       otherComponentVisible: !this.state.otherComponentVisible,
+    });
+  }
+
+  handleClickTable(ev) {
+    console.log(ev);
+    this.setState({
+      tableComponentVisible: !this.state.tableComponentVisible,
     });
   }
 
@@ -67,13 +78,15 @@ export default class App extends React.Component {
             </Route>
 
             <Route path="/part-of-main">
-              <MainAppButton
-                buttonClick={this.handleClick}
-                type="warning"
-              ></MainAppButton>
-              {this.state.otherComponentVisible && (
-                <div>other component here</div>
-              )}
+              <MainAppButton buttonClick={this.handleClickOther} type="warning">
+                Show Other Component
+              </MainAppButton>
+              {this.state.otherComponentVisible && <ExtraComponentOne />}
+
+              <MainAppButton buttonClick={this.handleClickTable}>
+                Show Table
+              </MainAppButton>
+              {this.state.tableComponentVisible && <BasicTable />}
             </Route>
           </Switch>
         </div>

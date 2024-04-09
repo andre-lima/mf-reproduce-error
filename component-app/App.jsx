@@ -31,7 +31,10 @@ export default class App extends React.Component {
         <br />
 
         <button onClick={this.handleClick}>click to open dialog</button>
-        <Dialog switchVisible={this.HanldeSwitchVisible} visible={this.state.dialogVisible} />
+        <Dialog
+          switchVisible={this.HanldeSwitchVisible}
+          visible={this.state.dialogVisible}
+        />
       </div>
     );
   }
