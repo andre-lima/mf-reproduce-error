@@ -11,15 +11,21 @@ module.exports = {
   //   },
   // },
   output: {
-    publicPath: 'http://localhost:3002/',
-    clean: true,
+    publicPath: 'auto',
   },
-  // output: {
-  //   filename: '[name].[contenthash].bundle.js',
-  //   chunkFilename: '[id].[contenthash].chunk.js',
-  //   path: path.join(__dirname, '../../public/dist'),
-  //   publicPath: '/dist/',
-  // },
+  devServer: {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers':
+        'X-Requested-With, content-type, Authorization',
+    },
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
+    port: 3002,
+    historyApiFallback: true,
+  },
   resolve: {
     extensions: [
       '.jsx',

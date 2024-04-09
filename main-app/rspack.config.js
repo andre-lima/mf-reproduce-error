@@ -5,10 +5,10 @@ const {
 const path = require('path');
 module.exports = {
   entry: './index.js',
-  mode: 'production',
+  mode: 'development',
   devtool: 'hidden-source-map',
   output: {
-    publicPath: 'http://localhost:3002/',
+    publicPath: '/',
     clean: true,
   },
   module: {

@@ -3,6 +3,7 @@ dist/
 node_modules/
 
 main-app/dist/
+main-app/public/
 main-app/.DS_Store
 main-app/node_modules/
 
