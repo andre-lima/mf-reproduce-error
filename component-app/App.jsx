@@ -39,3 +39,4 @@ export default class App extends React.Component {
     );
   }
 }
+export const ComponentApp = App;

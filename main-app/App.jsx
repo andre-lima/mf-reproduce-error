@@ -1,7 +1,8 @@
-import React from 'lib-app/react';
+import React from 'react';
 import Button from 'component-app/Button';
 import Dialog from 'component-app/Dialog';
 import ToolTip from 'component-app/ToolTip';
+import { ComponentApp } from 'component-app/App';
 import MainAppButton from './MainAppButton.jsx';
 import { Route, Link, Switch } from 'react-router-dom';
 import ExtraComponentOne from './ExtraComponentOne.jsx';
@@ -62,6 +63,8 @@ export default class App extends React.Component {
               <p>
                 components hosted on <strong>component-app</strong>
               </p>
+              <ComponentApp />
+
               <h4>Buttons:</h4>
               <Button type="primary" />
               <Button type="warning" />

@@ -97,9 +97,11 @@ module.exports = {
         './Dialog': './src/Dialog.jsx',
         './Logo': './src/Logo.jsx',
         './ToolTip': './src/ToolTip.jsx',
+        './App': './App.jsx',
       },
       remotes: {
         'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',
+        'main-app': 'main_app@http://localhost:3002/remoteEntry.js',
       },
     }),
     new HtmlWebpackPlugin({
