@@ -1,6 +1,6 @@
 import App from './App.jsx';
-import ReactDOM from 'lib-app/react-dom';
-import React from 'lib-app/react';
+import ReactDOM from 'react-dom';
+import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(

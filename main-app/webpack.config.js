@@ -5,7 +5,7 @@ const { dependencies } = require('./package.json');
 
 module.exports = {
   entry: './index.js',
-  mode: 'production',
+  mode: 'development',
   devtool: 'hidden-source-map',
   optimization: {
     splitChunks: {

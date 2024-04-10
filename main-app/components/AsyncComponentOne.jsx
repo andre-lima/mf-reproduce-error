@@ -25,17 +25,12 @@ const styleMapping = {
     cursor: 'pointer',
   },
 };
-export default class MainAppButton extends React.Component {
+export default class AsyncComponentOne extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const type = this.props.type || 'primary';
-    return (
-      <button onClick={this.props.buttonClick} style={styleMapping[type]}>
-        {this.props.children}
-      </button>
-    );
+    return <div>I'm an ASYNC component</div>;
   }
 }

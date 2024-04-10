@@ -7,6 +7,16 @@ import MainAppButton from './MainAppButton.jsx';
 import { Route, Link, Switch } from 'react-router-dom';
 import ExtraComponentOne from './ExtraComponentOne.jsx';
 import BasicTable from './Table.jsx';
+import { AsyncComponentLoader } from './components/AsyncComponentLoader.jsx';
+
+function asyncComponent(loader) {
+  return () => <AsyncComponentLoader moduleProvider={loader} />;
+}
+
+const AsyncCompOne = asyncComponent(
+  async () => (await import('./components')).AsyncComponentOne
+);
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -84,7 +94,12 @@ export default class App extends React.Component {
               <MainAppButton buttonClick={this.handleClickOther} type="warning">
                 Show Other Component
               </MainAppButton>
-              {this.state.otherComponentVisible && <ExtraComponentOne />}
+              {this.state.otherComponentVisible && (
+                <div>
+                  <AsyncCompOne />
+                  <ExtraComponentOne />
+                </div>
+              )}
 
               <MainAppButton buttonClick={this.handleClickTable}>
                 Show Table
