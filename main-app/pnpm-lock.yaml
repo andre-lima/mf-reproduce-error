@@ -6,7 +6,7 @@ specifiers:
   '@emotion/react': ^11.11.4
   '@emotion/styled': ^11.11.5
   '@module-federation/enhanced': ^0.0.0-next-20240330232226
-  '@module-federation/utilities': ^3.0.7
+  '@module-federation/utilities': 2.0.4
   '@mui/material': ^5.15.15
   '@rspack/cli': ^0.5.6
   '@rspack/core': ^0.5.6
@@ -15,6 +15,7 @@ specifiers:
   concurrently: 8.2.2
   css-loader: 6.10.0
   html-webpack-plugin: 5.6.0
+  path: ^0.12.7
   react: 17.0.2
   react-dom: 17.0.2
   react-router: 5.3.4
@@ -26,8 +27,9 @@ specifiers:
 dependencies:
   '@emotion/react': 11.11.4_react@17.0.2
   '@emotion/styled': 11.11.5_amotmpwsguk3auvmdjnwldt3oq
-  '@module-federation/utilities': 3.0.7_h7uqwbqfp4imlj7n3otxfuaefe
+  '@module-federation/utilities': 2.0.4_h7uqwbqfp4imlj7n3otxfuaefe
   '@mui/material': 5.15.15_zkjiiblres5oumuinsmu3fehbi
+  path: 0.12.7
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-router: 5.3.4_react@17.0.2
@@ -655,10 +657,6 @@ packages:
     resolution: {integrity: sha512-lkasywBItjUTNT0T0IskonDE2E/2tXE9UhUCPVoDL3NteDUSFGg4tpkF+cey1pD8mHh0XJcGrCuOW7s96peeAg==}
     dev: true
 
-  /@module-federation/sdk/0.1.2:
-    resolution: {integrity: sha512-G9af5sV/yyz5EpHOpg+y5gtDxomT6T1c7KETMs9k76GOcHKGBAoqiC8RJimgncN6O2wPhiBKEvNjf9VxrrX+gw==}
-    dev: false
-
   /@module-federation/third-party-dts-extractor/0.0.18:
     resolution: {integrity: sha512-p83dltdyTSB9o+hFUCTiJi/rINjwdGErgrBM6z+kW27BDleOy8K3uP+I18X+cI+4Sd1GRRaupEYPkWMEAmbKIw==}
     dependencies:
@@ -667,10 +665,10 @@ packages:
       resolve: 1.22.8
     dev: true
 
-  /@module-federation/utilities/3.0.7_h7uqwbqfp4imlj7n3otxfuaefe:
-    resolution: {integrity: sha512-wkuPr48BTiFEpIfAbIG0v2k+tm5+dx738tR5g8LPkqx8x7qSKbDtHSu6CEWdz5GPOLIi2i8iDQfZlGaSs7DgIw==}
+  /@module-federation/utilities/2.0.4_h7uqwbqfp4imlj7n3otxfuaefe:
+    resolution: {integrity: sha512-2youICrL7FWSGGPe+GwZTr5IsNZMdUv6kFRrH+gXV1/TfR1zeQ0y0ixRJUFskOt22nSeH6fOEhiCuqIWD1dQGQ==}
     peerDependencies:
-      next: '*'
+      next: ^12 || ^13
       react: ^16 || ^17 || ^18
       react-dom: ^16 || ^17 || ^18
       webpack: ^5.40.0
@@ -682,10 +680,10 @@ packages:
       react-dom:
         optional: true
     dependencies:
-      '@module-federation/sdk': 0.1.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       webpack: 5.91.0_webpack-cli@5.1.4
+      webpack-sources: 3.2.3
     dev: false
 
   /@module-federation/webpack-bundler-runtime/0.0.0-next-20240408040658:
@@ -2950,7 +2948,6 @@ packages:
 
   /inherits/2.0.3:
     resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
-    dev: true
 
   /inherits/2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -3644,6 +3641,13 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
+  /path/0.12.7:
+    resolution: {integrity: sha512-aXXC6s+1w7otVF9UletFkFcDsJeO7lSZBPUQhtb5O0xJe8LtYhj/GxldoL09bBj9+ZmE2hNoHqQSFMN5fikh4Q==}
+    dependencies:
+      process: 0.11.10
+      util: 0.10.4
+    dev: false
+
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
 
@@ -3737,6 +3741,11 @@ packages:
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
     dev: true
+
+  /process/0.11.10:
+    resolution: {integrity: sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==}
+    engines: {node: '>= 0.6.0'}
+    dev: false
 
   /prop-types/15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
@@ -4557,6 +4566,12 @@ packages:
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
+
+  /util/0.10.4:
+    resolution: {integrity: sha512-0Pm9hTQ3se5ll1XihRic3FDIku70C+iHUdT/W926rSgHV5QgXsYbKZN8MSC3tJtSkhuROzvsQjAaFENRXr+19A==}
+    dependencies:
+      inherits: 2.0.3
+    dev: false
 
   /utila/0.4.0:
     resolution: {integrity: sha512-Z0DbgELS9/L/75wZbro8xAnT50pBVFQZ+hUEueGDU5FN51YSCYM+jdxsfCiHjwNP/4LCDD0i/graKpeBnOXKRA==}

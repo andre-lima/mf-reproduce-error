@@ -1,3 +1,3 @@
-import AsyncComponentOne from './AsyncComponentOne';
+import AsyncComponent from './AsyncComponent';
 
-export { AsyncComponentOne };
+export { AsyncComponent };

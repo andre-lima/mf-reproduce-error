@@ -1,4 +1,5 @@
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+// const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('webpack').container;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const { dependencies } = require('./package.json');
@@ -9,13 +10,13 @@ module.exports = {
   devtool: 'hidden-source-map',
   output: {
     publicPath: 'auto',
+    chunkFilename: '[id].[contenthash].chunk.js',
   },
   optimization: {
     splitChunks: {
       chunks: 'async',
-      maxSize: 700,
-      minSize: 300,
-      minChunks: 10,
+      maxSize: 2000,
+      minSize: 1000,
     },
   },
   devServer: {
@@ -93,15 +94,11 @@ module.exports = {
         },
       },
       exposes: {
-        './Button': './src/Button.jsx',
-        './Dialog': './src/Dialog.jsx',
-        './Logo': './src/Logo.jsx',
-        './ToolTip': './src/ToolTip.jsx',
-        './App': './App.jsx',
+        './CompApp': './CompApp.jsx',
       },
       remotes: {
-        'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',
-        'main-app': 'main_app@http://localhost:3002/remoteEntry.js',
+        // 'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',
+        // 'main-app': 'main_app@http://localhost:3002/remoteEntry.js',
       },
     }),
     new HtmlWebpackPlugin({

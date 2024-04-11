@@ -1,4 +1,4 @@
-import React from 'lib-app/react';
+import React from 'react';
 const wrapperStyle = {
   position: 'fixed',
   top: 0,
@@ -30,7 +30,10 @@ export default class Dialog extends React.Component {
               <p>What is your name ?</p>
               <input style={{ fontSize: '18px', lineHeight: 2 }} type="text" />
             </div>
-            <button style={{ marginTop: '10px' }} onClick={() => this.props.switchVisible(false)}>
+            <button
+              style={{ marginTop: '10px' }}
+              onClick={() => this.props.switchVisible(false)}
+            >
               close It!
             </button>
           </div>

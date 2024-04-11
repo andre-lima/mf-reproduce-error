@@ -1,4 +1,5 @@
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+// const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('webpack').container;
 const path = require('path');
 const { dependencies } = require('./package.json');
 
@@ -8,6 +9,7 @@ module.exports = {
   devtool: 'hidden-source-map',
   output: {
     publicPath: 'auto',
+    chunkFilename: '[id].[contenthash].chunk.js',
   },
   devServer: {
     headers: {
@@ -41,10 +43,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'lib_app',
       filename: 'remoteEntry.js',
-      exposes: {
-        './react': 'react',
-        './react-dom': 'react-dom',
-      },
+      exposes: {},
       shared: {
         ...dependencies,
         react: {

@@ -1,20 +1,23 @@
-import React from 'react';
-import Button from 'component-app/Button';
-import Dialog from 'component-app/Dialog';
-import ToolTip from 'component-app/ToolTip';
-import { ComponentApp } from 'component-app/App';
+import React, { Suspense } from 'react';
 import MainAppButton from './MainAppButton.jsx';
 import { Route, Link, Switch } from 'react-router-dom';
-import ExtraComponentOne from './ExtraComponentOne.jsx';
-import BasicTable from './Table.jsx';
 import { AsyncComponentLoader } from './components/AsyncComponentLoader.jsx';
+import { importRemote } from '@module-federation/utilities';
 
 function asyncComponent(loader) {
   return () => <AsyncComponentLoader moduleProvider={loader} />;
 }
 
-const AsyncCompOne = asyncComponent(
-  async () => (await import('./components')).AsyncComponentOne
+const AsyncComp = asyncComponent(
+  async () => (await import('./components')).AsyncComponent
+);
+
+const AsyncComponentApp = React.lazy(async () =>
+  importRemote({
+    url: 'http://localhost:3001',
+    scope: 'component_app',
+    module: 'CompApp',
+  })
 );
 
 export default class App extends React.Component {
@@ -73,38 +76,17 @@ export default class App extends React.Component {
               <p>
                 components hosted on <strong>component-app</strong>
               </p>
-              <ComponentApp />
-
-              <h4>Buttons:</h4>
-              <Button type="primary" />
-              <Button type="warning" />
-              <h4>Dialog:</h4>
-              <button onClick={this.handleClick}>
-                click me to open Dialog
-              </button>
-              <Dialog
-                switchVisible={this.handleSwitchVisible}
-                visible={this.state.dialogVisible}
-              />
-              <h4>hover me please!</h4>
-              <ToolTip content="hover me please" message="Hello,world!" />
+              {/* <ComponentApp /> */}
+              <Suspense fallback={<div>Loading Module...</div>}>
+                <AsyncComponentApp />
+              </Suspense>
             </Route>
 
             <Route path="/part-of-main">
-              <MainAppButton buttonClick={this.handleClickOther} type="warning">
-                Show Other Component
-              </MainAppButton>
-              {this.state.otherComponentVisible && (
-                <div>
-                  <AsyncCompOne />
-                  <ExtraComponentOne />
-                </div>
-              )}
-
               <MainAppButton buttonClick={this.handleClickTable}>
-                Show Table
+                Show Async Table
               </MainAppButton>
-              {this.state.tableComponentVisible && <BasicTable />}
+              {this.state.tableComponentVisible && <AsyncComp />}
             </Route>
           </Switch>
         </div>

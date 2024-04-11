@@ -1,22 +1,23 @@
-const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+// const { ModuleFederationPlugin } = require('@module-federation/enhanced');
+const { ModuleFederationPlugin } = require('webpack').container;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const { dependencies } = require('./package.json');
 
 module.exports = {
   entry: './index.js',
-  mode: 'development',
+  mode: 'production',
   devtool: 'hidden-source-map',
   optimization: {
     splitChunks: {
       chunks: 'async',
-      maxSize: 700,
-      minSize: 300,
-      minChunks: 10,
+      maxSize: 2000,
+      minSize: 1000,
     },
   },
   output: {
     publicPath: 'auto',
+    chunkFilename: '[id].[contenthash].chunk.js',
   },
   devServer: {
     headers: {
@@ -70,7 +71,7 @@ module.exports = {
       name: 'main_app',
       remotes: {
         'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',
-        'component-app': 'component_app@http://localhost:3001/remoteEntry.js',
+        // 'component-app': 'component_app@http://localhost:3001/remoteEntry.js',
       },
       shared: [
         {

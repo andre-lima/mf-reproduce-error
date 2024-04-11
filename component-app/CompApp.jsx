@@ -1,9 +1,9 @@
-import React from 'lib-app/react';
+import React from 'react';
 import Logo from './src/Logo.jsx';
 import Dialog from './src/Dialog.jsx';
 import Button from './src/Button.jsx';
 
-export default class App extends React.Component {
+export default class CompApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,4 +40,4 @@ export default class App extends React.Component {
     );
   }
 }
-export const ComponentApp = App;
+export { CompApp };

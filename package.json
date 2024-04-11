@@ -19,6 +19,10 @@
   },
   "homepage": "https://github.com/anderlaw/react-webpack-MF#readme",
   "devDependencies": {
-    "wait-on": "7.2.0"
+    "wait-on": "7.2.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@module-federation/utilities": "^3.0.8"
   }
 }
