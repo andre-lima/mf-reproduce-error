@@ -10,6 +10,7 @@ export default class AsyncComponent extends React.Component {
     return (
       <div>
         <BasicTable />
+        {console.log('LOADED TABLE')}
       </div>
     );
   }
