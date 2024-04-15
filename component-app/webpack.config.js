@@ -97,10 +97,7 @@ module.exports = {
       exposes: {
         './CompApp': './CompApp.jsx',
       },
-      remotes: {
-        // 'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',
-        // 'main-app': 'main_app@http://localhost:3002/remoteEntry.js',
-      },
+      remotes: {},
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

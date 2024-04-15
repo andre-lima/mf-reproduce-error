@@ -70,10 +70,7 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: 'main_app',
-      remotes: {
-        'lib-app': 'lib_app@http://localhost:3000/remoteEntry.js',
-        // 'component-app': 'component_app@http://localhost:3001/remoteEntry.js',
-      },
+      remotes: {},
       shared: [
         {
           ...Object.keys(dependencies).forEach((key) => ({
